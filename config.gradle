@@ -1,0 +1,17 @@
+ext{
+    minSdkVersion = 16
+    targetSdkVersion = 28
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.3'
+
+    supportLibraryVersion = '26.1.0'
+    dagger2Version = '2.8'
+
+    timberVersion = '4.5.1'
+
+    greenDaoVersion = '3.2.0'
+
+    rxjava2Version = '2.0.6'
+
+    butterKnifeVersion = '8.6.0'
+}
