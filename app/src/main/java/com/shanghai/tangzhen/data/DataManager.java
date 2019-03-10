@@ -6,4 +6,9 @@ import com.shanghai.tangzhen.data.prefs.PreferencesHelper;
 
 public interface DataManager extends PreferencesHelper, ApiHelper, DbHelper {
 
+
+
+
+
+    
 }
