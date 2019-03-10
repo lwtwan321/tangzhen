@@ -9,4 +9,5 @@ public interface DataManager extends PreferencesHelper, ApiHelper, DbHelper {
 
     //TODO
     //THIS IS TODO
+    //THIS IS FOUR
 }
