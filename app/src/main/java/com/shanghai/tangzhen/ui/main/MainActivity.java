@@ -23,7 +23,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         tv.setText(stringFromJNI());
 
-        
+
     }
 
     /**

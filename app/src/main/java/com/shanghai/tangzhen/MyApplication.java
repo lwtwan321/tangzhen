@@ -26,18 +26,19 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        //初始映射组件
         mApplicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this)).build();
 
         mApplicationComponent.inject(this);
 
+        //初始日志
         AppLogger.init();
-//        AppLogger.d("ddd", "SyncService stopped","dffff");
 //        Timber.d(sss);
 
-        if (mDataManager != null) {
-//            preferencesHelper.setCurrentUserName("dingjiahui");
-            Timber.d("have");
-        }
+    }
+
+    public ApplicationComponent getmApplicationComponent() {
+        return mApplicationComponent;
     }
 }

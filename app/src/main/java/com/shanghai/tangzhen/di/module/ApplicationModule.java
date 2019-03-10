@@ -8,6 +8,8 @@ import com.shanghai.tangzhen.data.AppDataManager;
 import com.shanghai.tangzhen.data.DataManager;
 import com.shanghai.tangzhen.data.db.AppDbHelper;
 import com.shanghai.tangzhen.data.db.DbHelper;
+import com.shanghai.tangzhen.data.network.ApiHelper;
+import com.shanghai.tangzhen.data.network.AppApiHelper;
 import com.shanghai.tangzhen.data.prefs.AppPreferencesHelper;
 import com.shanghai.tangzhen.data.prefs.PreferencesHelper;
 import com.shanghai.tangzhen.di.ApplicationContext;
@@ -62,6 +64,12 @@ public class ApplicationModule {
     @Singleton
     DbHelper providerDbHelper(AppDbHelper appDbHelper) {
         return appDbHelper;
+    }
+
+    @Provides
+    @Singleton
+    ApiHelper providerApiHelper(AppApiHelper appApiHelper) {
+        return appApiHelper;
     }
 
     @Provides
