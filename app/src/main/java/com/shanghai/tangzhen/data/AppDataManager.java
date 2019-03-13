@@ -3,6 +3,7 @@ package com.shanghai.tangzhen.data;
 import com.shanghai.tangzhen.data.db.DbHelper;
 import com.shanghai.tangzhen.data.db.model.User;
 import com.shanghai.tangzhen.data.network.ApiHelper;
+import com.shanghai.tangzhen.data.network.api.WeatherService;
 import com.shanghai.tangzhen.data.prefs.PreferencesHelper;
 
 import java.util.List;
@@ -46,5 +47,16 @@ public class AppDataManager implements DataManager {
     public Observable<List<User>> getAllUsers() {
         return dbHelper.getAllUsers();
     }
+
+
     /*********************************************************网络操作****************************************************************/
+
+    /**
+     * 获取天气服务
+     * @return
+     */
+    @Override
+    public WeatherService getUserAPI() {
+        return apiHelper.getUserAPI();
+    }
 }

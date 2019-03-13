@@ -22,9 +22,13 @@ public class MyApplication extends Application {
 
     private ApplicationComponent mApplicationComponent;
 
+    public static MyApplication mInstance;
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        mInstance = this;
 
         //初始映射组件
         mApplicationComponent = DaggerApplicationComponent.builder()
@@ -40,5 +44,9 @@ public class MyApplication extends Application {
 
     public ApplicationComponent getmApplicationComponent() {
         return mApplicationComponent;
+    }
+
+    public static MyApplication getInstance() {
+        return mInstance;
     }
 }

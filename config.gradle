@@ -11,7 +11,13 @@ ext{
 
     greenDaoVersion = '3.2.0'
 
-    rxjava2Version = '2.0.6'
+    rxjava2Version = '2.2.3'
 
     butterKnifeVersion = '8.6.0'
+
+    okhttpVersion = '3.1.2'
+
+    okhttpLoggingVersion = '3.2.0'
+
+    retrofitVersion = '2.4.0'
 }
