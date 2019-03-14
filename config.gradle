@@ -17,7 +17,9 @@ ext{
 
     okhttpVersion = '3.1.2'
 
-    okhttpLoggingVersion = '3.2.0'
+    okhttpLoggingVersion = '3.4.1'
 
     retrofitVersion = '2.4.0'
+
+    rxandroidVersion = '2.0.1'
 }

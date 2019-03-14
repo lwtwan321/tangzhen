@@ -1,11 +1,8 @@
 package com.shanghai.tangzhen;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.shanghai.tangzhen.data.DataManager;
-import com.shanghai.tangzhen.data.prefs.PreferencesHelper;
-import com.shanghai.tangzhen.di.DatabaseInfo;
 import com.shanghai.tangzhen.di.component.ApplicationComponent;
 import com.shanghai.tangzhen.di.component.DaggerApplicationComponent;
 import com.shanghai.tangzhen.di.module.ApplicationModule;
@@ -13,16 +10,14 @@ import com.shanghai.tangzhen.utils.AppLogger;
 
 import javax.inject.Inject;
 
-import timber.log.Timber;
-
-public class MyApplication extends Application {
+public class TangZhenApplication extends Application {
 
     @Inject
     DataManager mDataManager;
 
     private ApplicationComponent mApplicationComponent;
 
-    public static MyApplication mInstance;
+    public static TangZhenApplication mInstance;
 
     @Override
     public void onCreate() {
@@ -46,7 +41,7 @@ public class MyApplication extends Application {
         return mApplicationComponent;
     }
 
-    public static MyApplication getInstance() {
+    public static TangZhenApplication getInstance() {
         return mInstance;
     }
 }

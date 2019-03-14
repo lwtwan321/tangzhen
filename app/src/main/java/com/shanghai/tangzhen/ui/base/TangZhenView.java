@@ -2,7 +2,7 @@ package com.shanghai.tangzhen.ui.base;
 
 import android.support.annotation.StringRes;
 
-public interface BaseView {
+public interface TangZhenView {
     void showLoading();
 
     void hideLoading();

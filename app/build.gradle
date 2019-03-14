@@ -15,7 +15,7 @@ android {
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID_TOOLCHAIN=clang"
-                abiFilters "armeabi-v7a", "x86"
+                abiFilters "armeabi-v7a" //, "x86"
             }
         }
         packagingOptions {
@@ -77,6 +77,7 @@ dependencies {
 
     // reactive
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
 
     // Retrofit库
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"

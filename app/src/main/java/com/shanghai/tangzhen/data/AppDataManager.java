@@ -56,7 +56,7 @@ public class AppDataManager implements DataManager {
      * @return
      */
     @Override
-    public WeatherService getUserAPI() {
-        return apiHelper.getUserAPI();
+    public WeatherService getWeatherAPI() {
+        return apiHelper.getWeatherAPI();
     }
 }

@@ -4,14 +4,23 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.shanghai.tangzhen.TangZhenApplication;
+import com.shanghai.tangzhen.di.component.ActivityComponent;
+import com.shanghai.tangzhen.di.component.DaggerActivityComponent;
+import com.shanghai.tangzhen.di.module.ActivityModule;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity extends AppCompatActivity implements BaseView{
+public abstract class BaseActivity extends AppCompatActivity implements TangZhenView {
 
-    static {
-        System.loadLibrary("native-lib");
-    }
+//    static {
+//        System.loadLibrary("native-lib");
+//    }
+//
+//    public native String stringFromJNI();
+
+    private ActivityComponent mActivityComponent;
 
     private Unbinder mUnBinder;
 
@@ -20,8 +29,16 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActivityComponent = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(((TangZhenApplication)getApplication()).getmApplicationComponent())
+                .build();
         setContentView(getLayout());
         setUnBinder(ButterKnife.bind(this));
+    }
+
+    public ActivityComponent getmActivityComponent() {
+        return mActivityComponent;
     }
 
     public void setUnBinder(Unbinder unBinder) {

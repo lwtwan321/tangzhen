@@ -4,14 +4,21 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.shanghai.tangzhen.R;
+import com.shanghai.tangzhen.data.network.model.XiaoMiWeather;
 import com.shanghai.tangzhen.ui.base.BaseActivity;
 
-import butterknife.BindView;
+import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity {
+import butterknife.BindView;
+import timber.log.Timber;
+
+public class MainActivity extends BaseActivity implements MainTangZhenView {
 
     @BindView(R.id.sample_text)
     TextView tv;
+
+    @Inject
+    MainTangZhenPresenter<MainTangZhenView> mainPresenter;
 
     @Override
     public int getLayout() {
@@ -21,14 +28,20 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tv.setText(stringFromJNI());
-
-
+        getmActivityComponent().inject(this);
+        mainPresenter.onAttach(this);
+        mainPresenter.onDrawWeather();
     }
 
-    /**
-     * A native method that is implemented by the 'native-lib' native library,
-     * which is packaged with this application.
-     */
-    public native String stringFromJNI();
+
+    @Override
+    public void showWeather(XiaoMiWeather xiaoMiWeather) {
+        Timber.d("UI Main 拿到了数据");
+    }
+
+    @Override
+    protected void onDestroy() {
+        mainPresenter.onDetach();
+        super.onDestroy();
+    }
 }

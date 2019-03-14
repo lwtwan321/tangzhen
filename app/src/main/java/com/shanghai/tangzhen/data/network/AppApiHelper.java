@@ -1,6 +1,6 @@
 package com.shanghai.tangzhen.data.network;
 
-import com.shanghai.tangzhen.MyApplication;
+import com.shanghai.tangzhen.TangZhenApplication;
 import com.shanghai.tangzhen.data.network.api.WeatherService;
 import com.shanghai.tangzhen.utils.CommonUtil;
 
@@ -35,7 +35,7 @@ public class AppApiHelper implements ApiHelper {
             synchronized (AppApiHelper.class) {
                 if (mOkHttpClient == null) {
                     //设置Http缓存
-                    Cache cache = new Cache(new File(MyApplication.getInstance().getCacheDir(), "HttpCache"), 1024 * 1024 * 10);
+                    Cache cache = new Cache(new File(TangZhenApplication.getInstance().getCacheDir(), "HttpCache"), 1024 * 1024 * 10);
                     mOkHttpClient = new OkHttpClient.Builder()
                             .cache(cache)
                             .addInterceptor(interceptor)
@@ -74,7 +74,7 @@ public class AppApiHelper implements ApiHelper {
             // 无网络时，设置超时为1天
             int maxStale = 60 * 60 * 24;
             Request request = chain.request();
-            if (CommonUtil.isNetworkAvailable(MyApplication.getInstance())) {
+            if (CommonUtil.isNetworkAvailable(TangZhenApplication.getInstance())) {
                 //有网络时只从网络获取
                 request = request.newBuilder().cacheControl(CacheControl.FORCE_NETWORK).build();
             } else {
@@ -82,7 +82,7 @@ public class AppApiHelper implements ApiHelper {
                 request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
             }
             Response response = chain.proceed(request);
-            if (CommonUtil.isNetworkAvailable(MyApplication.getInstance())) {
+            if (CommonUtil.isNetworkAvailable(TangZhenApplication.getInstance())) {
                 response = response.newBuilder()
                         .removeHeader("Pragma")
                         .header("Cache-Control", "public, max-age=" + maxAge)
@@ -118,7 +118,7 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public WeatherService getUserAPI() {
+    public WeatherService getWeatherAPI() {
         return createApi(WeatherService.class, ApiConstants.XIAOMI_WEATHER_BASE_URL);
     }
 }
