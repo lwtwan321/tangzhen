@@ -6,7 +6,6 @@ import com.shanghai.tangzhen.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -15,17 +14,14 @@ import timber.log.Timber;
 
 public class MainPresenter<V extends MainTangZhenView> extends BasePresenter<V> implements MainTangZhenPresenter<V> {
 
-    protected CompositeDisposable compositeDisposable =null;
-
     @Inject
-    public MainPresenter(DataManager mDataManager) {
-        super(mDataManager);
+    public MainPresenter(DataManager mDataManager,CompositeDisposable compositeDisposable) {
+        super(mDataManager, compositeDisposable);
     }
 
     @Override
     public void onDrawWeather() {
-        compositeDisposable = new CompositeDisposable();
-        compositeDisposable.add(
+        getCompositeDisposable().add(
                 getmDataManager().getWeatherAPI().getWeather(33,33)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

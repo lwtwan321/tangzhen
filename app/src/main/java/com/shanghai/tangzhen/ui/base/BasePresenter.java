@@ -9,26 +9,25 @@ import io.reactivex.disposables.CompositeDisposable;
 public class BasePresenter<V extends TangZhenView> implements TangZhenPresenter<V> {
 
     private final DataManager mDataManager;
+    private  final CompositeDisposable compositeDisposable;
 
     private V mTangZhenView;
 
-   protected CompositeDisposable compositeDisposable = null;
-
     @Inject
-    public BasePresenter(DataManager mDataManager) {
+    public BasePresenter(DataManager mDataManager, CompositeDisposable compositeDisposable) {
         this.mDataManager = mDataManager;
+        this.compositeDisposable = compositeDisposable;
     }
 
     @Override
     public void onAttach(V baseView) {
-
         mTangZhenView = baseView;
-
     }
 
     @Override
     public void onDetach() {
         compositeDisposable.dispose();
+        mTangZhenView = null;
     }
 
     public boolean isViewAttached() {
@@ -42,5 +41,9 @@ public class BasePresenter<V extends TangZhenView> implements TangZhenPresenter<
 
     public DataManager getmDataManager() {
         return mDataManager;
+    }
+
+    public CompositeDisposable getCompositeDisposable() {
+        return compositeDisposable;
     }
 }

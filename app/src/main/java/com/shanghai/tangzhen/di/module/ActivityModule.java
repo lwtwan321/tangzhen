@@ -10,6 +10,7 @@ import com.shanghai.tangzhen.ui.main.MainTangZhenView;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 @Module
 public class ActivityModule {
@@ -33,6 +34,11 @@ public class ActivityModule {
     @Provides
     MainTangZhenPresenter<MainTangZhenView> provideMainTangZhenPresenter(MainPresenter<MainTangZhenView> mainPresenter){
         return mainPresenter;
+    }
+
+    @Provides
+    CompositeDisposable provideCompositeDisposable(){
+        return new CompositeDisposable();
     }
 
 }
