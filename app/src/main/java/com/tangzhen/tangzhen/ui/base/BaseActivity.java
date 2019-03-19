@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.tangzhen.tangzhen.TangZhenApplication;
+import com.tangzhen.base.TangZhenView;
 import com.tangzhen.tangzhen.di.component.ActivityComponent;
 import com.tangzhen.tangzhen.di.component.DaggerActivityComponent;
 import com.tangzhen.tangzhen.di.module.ActivityModule;
+import com.tangzhen.utils.TangZhenApplication;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

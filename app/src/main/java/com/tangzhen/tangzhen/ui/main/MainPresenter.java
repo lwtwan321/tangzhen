@@ -1,8 +1,8 @@
 package com.tangzhen.tangzhen.ui.main;
 
-import com.tangzhen.tangzhen.data.DataManager;
-import com.tangzhen.tangzhen.data.network.model.XiaoMiWeather;
-import com.tangzhen.tangzhen.ui.base.BasePresenter;
+import com.tangzhen.data.DataManager;
+import com.tangzhen.data.network.model.XiaoMiWeather;
+import com.tangzhen.base.BasePresenter;
 
 import javax.inject.Inject;
 

@@ -6,11 +6,11 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
 
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
-//            }
-//        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ AROUTER_MODULE_NAME : project.getName() ]
+            }
+        }
 
     }
 
@@ -27,11 +27,11 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
 
     api 'com.alibaba:arouter-api:1.4.1'
-    //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+        annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
     api "com.google.dagger:dagger:$rootProject.dagger2Version"
-    //    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+        annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
     api "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
-    //    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+        annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
 
 
     // logger

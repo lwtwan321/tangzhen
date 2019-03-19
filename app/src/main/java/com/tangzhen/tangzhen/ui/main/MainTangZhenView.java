@@ -1,7 +1,7 @@
 package com.tangzhen.tangzhen.ui.main;
 
-import com.tangzhen.tangzhen.data.network.model.XiaoMiWeather;
-import com.tangzhen.tangzhen.ui.base.TangZhenView;
+import com.tangzhen.data.network.model.XiaoMiWeather;
+import com.tangzhen.base.TangZhenView;
 
 public interface MainTangZhenView extends TangZhenView {
 

@@ -1,6 +1,7 @@
 package com.tangzhen.tangzhen.di.component;
 
-import com.tangzhen.tangzhen.di.PerActivity;
+import com.tangzhen.di.component.ApplicationComponent;
+import com.tangzhen.di.PerActivity;
 import com.tangzhen.tangzhen.di.module.ActivityModule;
 import com.tangzhen.tangzhen.ui.main.MainActivity;
 
