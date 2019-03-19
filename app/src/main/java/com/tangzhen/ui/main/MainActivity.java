@@ -1,19 +1,14 @@
-package com.tangzhen.tangzhen.ui.main;
+package com.tangzhen.ui.main;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.tangzhen.di.component.DaggerBaseActivityComponent;
-import com.tangzhen.di.module.BaseActivityModule;
+import com.tangzhen.base.MyBaseActivity;
+import com.tangzhen.base.TangZhenPresenter;
 import com.tangzhen.tangzhen.R;
 import com.tangzhen.data.network.model.XiaoMiWeather;
-import com.tangzhen.base.BaseActivity;
-import com.tangzhen.tangzhen.di.component.ActivityComponent;
-import com.tangzhen.tangzhen.di.component.DaggerActivityComponent;
-import com.tangzhen.tangzhen.di.module.ActivityModule;
-import com.tangzhen.utils.TangZhenApplication;
 
 import javax.inject.Inject;
 
@@ -21,7 +16,7 @@ import butterknife.BindView;
 import timber.log.Timber;
 
 
-public class MainActivity extends BaseActivity implements MainTangZhenView {
+public class MainActivity extends MyBaseActivity<MainTangZhenPresenter<MainTangZhenView>> implements MainTangZhenView {
 
     @BindView(R.id.sample_text)
     Button sample_text;
@@ -36,17 +31,19 @@ public class MainActivity extends BaseActivity implements MainTangZhenView {
 
     @Override
     protected void initInject() {
-        DaggerActivityComponent.builder()
-                .activityModule(new ActivityModule(this))
-                .baseActivityComponent(getmActivityComponent())
-                .build().inject(this);
+        getActivityComponent().inject(this);
+    }
+
+    @Override
+    protected TangZhenPresenter getTangZhenPresenter() {
+        return mainPresenter;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mainPresenter.onAttach(this);
+
         mainPresenter.onDrawWeather();
 
 
@@ -67,9 +64,4 @@ public class MainActivity extends BaseActivity implements MainTangZhenView {
         Timber.d("UI Main 拿到了数据");
     }
 
-    @Override
-    protected void onDestroy() {
-        mainPresenter.onDetach();
-        super.onDestroy();
-    }
 }

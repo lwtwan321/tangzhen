@@ -1,4 +1,4 @@
-package com.tangzhen.tangzhen.ui.splash;
+package com.tangzhen.ui.splash;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

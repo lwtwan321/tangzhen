@@ -1,4 +1,4 @@
-package com.tangzhen.tangzhen.ui.main;
+package com.tangzhen.ui.main;
 
 import com.tangzhen.base.TangZhenPresenter;
 

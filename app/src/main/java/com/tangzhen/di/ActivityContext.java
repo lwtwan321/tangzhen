@@ -1,4 +1,4 @@
-package com.tangzhen.tangzhen.di;
+package com.tangzhen.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

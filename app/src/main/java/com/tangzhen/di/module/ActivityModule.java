@@ -1,10 +1,10 @@
-package com.tangzhen.tangzhen.di.module;
+package com.tangzhen.di.module;
 
 import android.support.v7.app.AppCompatActivity;
 
-import com.tangzhen.tangzhen.ui.main.MainPresenter;
-import com.tangzhen.tangzhen.ui.main.MainTangZhenPresenter;
-import com.tangzhen.tangzhen.ui.main.MainTangZhenView;
+import com.tangzhen.ui.main.MainPresenter;
+import com.tangzhen.ui.main.MainTangZhenPresenter;
+import com.tangzhen.ui.main.MainTangZhenView;
 
 import dagger.Module;
 import dagger.Provides;
