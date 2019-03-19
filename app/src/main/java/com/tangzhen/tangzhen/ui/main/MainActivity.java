@@ -1,0 +1,64 @@
+package com.tangzhen.tangzhen.ui.main;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.tangzhen.tangzhen.R;
+import com.tangzhen.tangzhen.data.network.model.XiaoMiWeather;
+import com.tangzhen.tangzhen.ui.base.BaseActivity;
+
+import javax.inject.Inject;
+
+import butterknife.BindView;
+import timber.log.Timber;
+
+
+public class MainActivity extends BaseActivity implements MainTangZhenView {
+
+    @BindView(R.id.sample_text)
+    Button sample_text;
+
+    @Inject
+    MainTangZhenPresenter<MainTangZhenView> mainPresenter;
+
+    @Override
+    public int getLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        ARouter.getInstance().inject(this);
+        getmActivityComponent().inject(this);
+        mainPresenter.onAttach(this);
+        mainPresenter.onDrawWeather();
+
+
+        sample_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build("/ui/splish")
+                        .withString("gggs","dingjiahui")
+                        .withInt("age",23)
+                        .navigation();
+            }
+        });
+    }
+
+
+    @Override
+    public void showWeather(XiaoMiWeather xiaoMiWeather) {
+        Timber.d("UI Main 拿到了数据");
+    }
+
+    @Override
+    protected void onDestroy() {
+        mainPresenter.onDetach();
+        super.onDestroy();
+    }
+}
