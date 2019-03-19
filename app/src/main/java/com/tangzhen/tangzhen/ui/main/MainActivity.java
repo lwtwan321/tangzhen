@@ -5,9 +5,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.tangzhen.di.component.DaggerBaseActivityComponent;
+import com.tangzhen.di.module.BaseActivityModule;
 import com.tangzhen.tangzhen.R;
 import com.tangzhen.data.network.model.XiaoMiWeather;
-import com.tangzhen.tangzhen.ui.base.BaseActivity;
+import com.tangzhen.base.BaseActivity;
+import com.tangzhen.tangzhen.di.component.ActivityComponent;
+import com.tangzhen.tangzhen.di.component.DaggerActivityComponent;
+import com.tangzhen.tangzhen.di.module.ActivityModule;
+import com.tangzhen.utils.TangZhenApplication;
 
 import javax.inject.Inject;
 
@@ -29,10 +35,17 @@ public class MainActivity extends BaseActivity implements MainTangZhenView {
     }
 
     @Override
+    protected void initInject() {
+        DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .baseActivityComponent(getmActivityComponent())
+                .build().inject(this);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ARouter.getInstance().inject(this);
-        getmActivityComponent().inject(this);
+
         mainPresenter.onAttach(this);
         mainPresenter.onDrawWeather();
 
@@ -41,8 +54,8 @@ public class MainActivity extends BaseActivity implements MainTangZhenView {
             @Override
             public void onClick(View v) {
                 ARouter.getInstance().build("/ui/splish")
-                        .withString("gggs","dingjiahui")
-                        .withInt("age",23)
+                        .withString("gggs", "dingjiahui")
+                        .withInt("age", 23)
                         .navigation();
             }
         });
